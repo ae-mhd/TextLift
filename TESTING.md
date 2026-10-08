@@ -1,6 +1,6 @@
 # TextLift validation
 
-Tested on Windows in a separate headless Chrome 154.0.8037.95 profile. The extension was loaded through Chrome's DevTools Extensions API and activated with the real toolbar action, granting activeTab access. The fixtures were served locally by the test runner; no website account was used.
+Version 1.0.1, tested on Windows in a separate headless Chrome 154.0.8037.95 profile. The extension was loaded from the extracted Chrome Web Store upload ZIP through Chrome's DevTools Extensions API and activated with the real toolbar action, granting activeTab access. The demonstration webpage was supplied by the test runner; no website account was used.
 
 - PASS: Manifest V3 loads in installed Chrome
 - PASS: Real toolbar action injects picker using activeTab
@@ -27,5 +27,6 @@ Tested on Windows in a separate headless Chrome 154.0.8037.95 profile. The exten
 - PASS: Restricted Chrome pages show a useful help page
 - PASS: Default action shortcut is registered
 - PASS: No page JavaScript errors occurred
+- PASS: Bundled guide opens the complete local privacy policy
 
-25 checks passed. Clipboard checks used actual extension offscreen copying and browser paste, without mocks. The keyboard shortcut registration was verified; physical shortcut invocation was not automated.
+26 checks passed. Clipboard checks used actual extension offscreen copying and browser paste, without mocks. The keyboard shortcut registration was verified; physical shortcut invocation was not automated. Store screenshots were captured directly from this tested package at 1280×800.

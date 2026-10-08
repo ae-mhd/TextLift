@@ -5,6 +5,7 @@ test-results/
 coverage/
 chrome-test-profile/
 work/
+dist/
 
 # Local configuration and generated archives
 .env

@@ -21,6 +21,10 @@ kbd { display: inline-block; font: 12px system-ui, sans-serif; border: 1px solid
 button { padding: 12px 17px; border: 1px solid #087c69; border-radius: 9px; background: #087c69; color: white; font: 600 13px system-ui, sans-serif; cursor: pointer; margin-top: 10px; }
 button:hover { background: #066452; }
 button:focus-visible { outline: 3px solid #ecb351; outline-offset: 3px; }
+a { color: #087c69; }
+.policy h1 { font-size: 42px; letter-spacing: -1.5px; line-height: 1.15; margin-top: 44px; }
+.policy h2 { margin-top: 30px; }
+.policy p, .policy li { color: #4a6959; font-size: 15px; }
 aside { margin-top: 28px; padding: 20px; border-radius: 12px; background: #fff1de; border: 1px solid #e6c99b; color: #754523; font-size: 14px; }
 aside p { margin-bottom: 0; }
 @media (max-width: 500px) { main { padding: 32px 24px; } h1 { letter-spacing: -4px; } .eyebrow { margin-top: 44px; } }

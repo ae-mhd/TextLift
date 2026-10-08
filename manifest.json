@@ -1,9 +1,10 @@
 {
   "manifest_version": 3,
   "name": "TextLift",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Pick and copy text from buttons, tabs, links, and labels on demand.",
   "minimum_chrome_version": "116",
+  "homepage_url": "https://github.com/ae-mhd/TextLift",
   "permissions": ["activeTab", "scripting", "clipboardWrite", "offscreen"],
   "background": { "service_worker": "background.js" },
   "action": {

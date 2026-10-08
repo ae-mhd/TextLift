@@ -33,6 +33,18 @@ Activate the picker, point at an element, and click to capture its text. Edit th
 
 Requires **Chrome 116 or newer**. There is no build step or dependency installation for the extension. This is a local development installation; the extension has not been published to the Chrome Web Store.
 
+## Chrome Web Store package
+
+Version **1.0.1** includes a store packaging script, privacy policy, listing text, permission justifications, and store images. Follow [the upload guide](store/UPLOAD.md) to prepare the listing in your developer account.
+
+To produce the extension upload ZIP on Windows:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/package-store.ps1
+```
+
+The ZIP is written to `dist/` with `manifest.json` at its root. It contains the runtime files and icons. Repository files, the demo, and listing images are excluded from the extension upload package. The store images are uploaded separately.
+
 ## Use it
 
 - Open an ordinary website. Click the TextLift icon or press **Alt+Shift+L**.
@@ -59,6 +71,8 @@ TextLift has no dependencies, server, account, analytics, network requests, or s
 
 Text is used only for the hover preview, captured preview, and requested clipboard write. The picker is an extension content script with an isolated JavaScript environment; the preview uses a Shadow DOM to keep page styles from changing its controls. Text is inserted as text, never evaluated as HTML or code.
 
+Read the [privacy policy](PRIVACY.md) for details on the webpage text processed locally by TextLift.
+
 ## Version 1 scope
 
 Requires Chrome 116+. Supports ordinary rendered HTML text, form values except password fields, and open Shadow DOM. Icon-only controls can offer an accessible label, marked separately in the preview. It preserves basic paragraph breaks and normalizes whitespace.
@@ -69,7 +83,7 @@ Chrome prevents injection on its internal pages, the Web Store, and some built-i
 
 ## Validation
 
-Version 1 passed **25 automated checks** in Chrome on Windows, including actual clipboard copy/paste, button and link suppression, editable previews, selected text, Unicode, HTTP pages, modal dialogs, and narrow viewports. See [TESTING.md](TESTING.md) for the recorded checks and their limits.
+Version 1.0.1's extracted Chrome Web Store package passed **26 automated checks** in Chrome on Windows, including actual clipboard copy/paste, button and link suppression, editable previews, selected text, Unicode, HTTP pages, modal dialogs, narrow viewports, and the bundled privacy page. See [TESTING.md](TESTING.md) for the recorded checks and their limits.
 
 The included `demo.html` supports manual testing with click counters and a paste field.
 
