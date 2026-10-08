@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>TextLift practice page</title>
+<style>
+  * { box-sizing: border-box; } body { margin: 0; background: #f5f7f1; color: #193b32; font: 16px/1.6 system-ui, sans-serif; }
+  main { max-width: 900px; margin: auto; padding: 50px 36px 150px; } .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: #087c69; }
+  h1 { font-size: 48px; line-height: 1.08; letter-spacing: -2px; margin: 18px 0; } .intro { max-width: 600px; color: #597267; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 36px; }
+  section { padding: 24px; background: white; border: 1px solid #dbe3d8; border-radius: 16px; } h2 { font-size: 16px; margin: 0 0 20px; } p { font-size: 14px; }
+  button, [role=tab] { font: 600 14px system-ui, sans-serif; padding: 11px 16px; background: #087c69; color: white; border: 0; border-radius: 8px; cursor: pointer; }
+  .blocked { user-select: none; -webkit-user-select: none; } .counter { color: #6a7f6c; font-size: 12px; margin-top: 16px; }
+  .tabs { display: flex; gap: 8px; } [role=tab] { background: #e8f0e5; color: #245541; } [aria-selected=true] { background: #087c69; color: white; }
+  a { color: #087c69; font-weight: 650; } input, textarea { max-width: 100%; padding: 8px; border: 1px solid #c5d5c7; border-radius: 6px; font: inherit; }
+  pre { white-space: pre-wrap; font-size: 13px; background: #f0f4ef; padding: 12px; border-radius: 8px; }
+</style></head>
+<body><main>
+  <div class="eyebrow">TEXTLIFT / PRACTICE PAGE</div>
+  <h1>Some words are<br>hard to select.</h1>
+  <p class="intro">Start TextLift with its toolbar icon or <strong>Alt+Shift+L</strong>. Hover over an example, capture it, and copy from the preview. Page clicks should stay at zero while picking.</p>
+  <p class="intro">For this local file, enable <strong>Allow access to file URLs</strong> in TextLift’s extension details. Press <strong>Esc</strong> to exit.</p>
+  <div class="grid">
+    <section><h2>01 / A button</h2><button id="download" class="blocked"><span aria-hidden="true">↓ </span><span>Download report</span></button><p class="counter">Button clicks: <output id="button-count">0</output></p></section>
+    <section><h2>02 / Website tabs</h2><div class="tabs" role="tablist"><button role="tab" aria-selected="true" class="blocked">Overview</button><button id="messages" role="tab" aria-selected="false" class="blocked">Messages <span>12</span></button></div><p class="counter">Tab switches: <output id="tab-count">0</output></p></section>
+    <section><h2>03 / A link</h2><a id="link" class="blocked" href="#destination">Read the quarterly update</a><p class="counter">Link clicks: <output id="link-count">0</output></p></section>
+    <section><h2>04 / Hidden extra text</h2><div id="visible-only" class="blocked">Only these words<span style="display:none"> HIDDEN SECRET</span></div><p>The hidden span should be excluded.</p></section>
+    <section><h2>05 / An icon label</h2><button id="icon-only" aria-label="Open account settings">⚙</button><p>Visible characters take priority. An empty control can offer an accessible label.</p><button id="aria-only" aria-label="Open notifications" style="width:42px;height:36px"></button></section>
+    <section><h2>06 / A web component</h2><div id="shadow-host"></div><p class="counter">Component clicks: <output id="shadow-count">0</output></p></section>
+    <section><h2>07 / Multiple lines</h2><div id="multiline" class="blocked">First line<br>Second line</div><pre id="formatted">A small snippet
+  with indentation</pre></section>
+    <section><h2>08 / Another language</h2><button id="unicode" class="blocked">مرحبا بالعالم · Hello 🌍</button><p>Unicode text should copy unchanged.</p></section>
+    <section><h2>09 / Form values</h2><label for="name">Project name</label><input id="name" value="Quarterly research"><input id="password" type="password" value="excluded-example" aria-label="Password" style="margin-top:10px"><p>Password fields are excluded.</p></section>
+  </div>
+  <section style="margin-top:30px"><h2>Clipboard check</h2><p>After copying, click here and paste to check the result.</p><textarea id="paste-check" rows="3" aria-label="Paste copied text here" style="width:100%" placeholder="Paste your copied text here…"></textarea></section>
+</main>
+<script>
+  const increment = id => document.getElementById(id).textContent = Number(document.getElementById(id).textContent) + 1;
+  document.getElementById('download').addEventListener('click', () => increment('button-count'));
+  document.getElementById('messages').addEventListener('click', () => increment('tab-count'));
+  document.getElementById('link').addEventListener('click', event => { event.preventDefault(); increment('link-count'); });
+  const root = document.getElementById('shadow-host').attachShadow({mode:'open'});
+  root.innerHTML = '<style>button{font:600 14px system-ui;padding:11px 16px;border:0;border-radius:8px;background:#087c69;color:white;cursor:pointer;user-select:none}</style><button id="shadow-button"><span>Inside a web component</span></button>';
+  root.querySelector('button').addEventListener('click', () => increment('shadow-count'));
+</script>
+</body></html>

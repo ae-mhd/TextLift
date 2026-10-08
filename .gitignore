@@ -1,0 +1,21 @@
+# Development dependencies and test output
+node_modules/
+playwright-report/
+test-results/
+coverage/
+chrome-test-profile/
+work/
+
+# Local configuration and generated archives
+.env
+.env.*
+!.env.example
+*.log
+*.zip
+
+# Editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini
